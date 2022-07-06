@@ -1,0 +1,34 @@
+{
+  "name": "@robxyy/react-native-countdown",
+  "version": "0.1.0",
+  "description": "A simple countdown component for React Native.",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robxyy/react-native-countdown.git"
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "countdown",
+    "react-native-countdown",
+    "android",
+    "ios"
+  ],
+  "author": {
+    "name": "Rob X",
+    "email": "robxyy@gmail.com"
+  },
+  "homepage": "https://github.com/robxyy/react-native-countdown",
+  "license": "MIT",
+  "devDependencies": {
+    "@react-native-community/eslint-config": "2.0.0",
+    "eslint": "7.32.0",
+    "prop-types": "15.8.1",
+    "react": "17.0.2",
+    "react-native": "0.68.2"
+  }
+}
