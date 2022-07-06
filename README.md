@@ -4,8 +4,9 @@ A simple countdown component for React Native.
 
 ### Props
 
-| millisInFuture    | The number of millis in the future.                         |
+| Prop              | Description                                                 |
 |-------------------|-------------------------------------------------------------|
+| millisInFuture    | The number of millis in the future.                         |
 | countDownInterval | The interval along the way to receive `onTick()` callbacks. |
 | onTick            | Callback fired on regular interval.                         |
 | onFinish          | Callback fired when the time is up.                         |
