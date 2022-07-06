@@ -82,4 +82,5 @@ CountDown.propTypes = {
   onFinish: PropTypes.func,
 };
 
+export default CountDown;
 export {CountDown};
