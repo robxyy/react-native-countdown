@@ -48,7 +48,7 @@ function CountDown(props) {
         }
         break;
       case 'background':
-        if (0 < count && count < initialCount) {
+        if (count > 0 && count < initialCount) {
           setLeaveAt(new Date().getTime());
         }
         break;
@@ -58,7 +58,10 @@ function CountDown(props) {
   };
 
   useEffect(() => {
-    const eventSubscription = AppState.addEventListener('change', handleAppStateChanged,);
+    const eventSubscription = AppState.addEventListener(
+      'change',
+      handleAppStateChanged,
+    );
     const cancelId = setInterval(performTick, countDownInterval);
     return () => {
       clearInterval(cancelId);
@@ -70,9 +73,10 @@ function CountDown(props) {
 }
 
 CountDown.defaultProps = {
-  millisInFuture: 60 * 1000, countDownInterval: 1000, onTick: () => {
-  }, onFinish: () => {
-  },
+  millisInFuture: 60 * 1000,
+  countDownInterval: 1000,
+  onTick: () => {},
+  onFinish: () => {},
 };
 
 CountDown.propTypes = {
