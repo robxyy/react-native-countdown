@@ -32,21 +32,25 @@ function CountDown(props) {
   const handleAppStateChanged = appState => {
     switch (appState) {
       case 'active':
-        const leaveTime = new Date().getTime() - leaveAt;
-        const leaveCount = Math.round(leaveTime / _countDownInterval);
-        if (leaveCount > 0) {
-          const remainingCount = count - leaveCount;
-          if (remainingCount > 0) {
-            setCount(remainingCount);
+        if (leaveAt) {
+          const leaveTime = new Date().getTime() - leaveAt;
+          const leaveCount = Math.round(leaveTime / _countDownInterval);
+          if (leaveCount > 0) {
+            const remainingCount = count - leaveCount;
+            if (remainingCount > 0) {
+              setCount(remainingCount);
+            } else {
+              onFinish && onFinish();
+            }
           } else {
             onFinish && onFinish();
           }
-        } else {
-          onFinish && onFinish();
         }
         break;
       case 'background':
-        setLeaveAt(new Date().getTime());
+        if (0 < count && count < initialCount) {
+          setLeaveAt(new Date().getTime());
+        }
         break;
       default:
         break;
@@ -54,10 +58,7 @@ function CountDown(props) {
   };
 
   useEffect(() => {
-    const eventSubscription = AppState.addEventListener(
-      'change',
-      handleAppStateChanged,
-    );
+    const eventSubscription = AppState.addEventListener('change', handleAppStateChanged,);
     const cancelId = setInterval(performTick, countDownInterval);
     return () => {
       clearInterval(cancelId);
@@ -69,10 +70,9 @@ function CountDown(props) {
 }
 
 CountDown.defaultProps = {
-  millisInFuture: 60 * 1000,
-  countDownInterval: 1000,
-  onTick: () => {},
-  onFinish: () => {},
+  millisInFuture: 60 * 1000, countDownInterval: 1000, onTick: () => {
+  }, onFinish: () => {
+  },
 };
 
 CountDown.propTypes = {
